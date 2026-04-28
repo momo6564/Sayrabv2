@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-primary: #1A1A1A;
+  --color-editorial-bg: #F8F7F2;
+  --color-editorial-ink: #1A1A1A;
+  --color-editorial-accent: #C5A059;
+  --color-editorial-muted: #E5E4DE;
+  
+  --color-surface-container-lowest: #F8F7F2;
+  --color-surface-container-low: #E5E4DE;
+  --color-surface-container: #D6D3C9;
+  --color-surface-container-high: #1A1A1A;
+  --color-surface-container-highest: #1A1A1A;
+  
+  --color-on-surface: #1A1A1A;
+  --color-on-surface-variant: #666666;
+  
+  --color-outline: #1A1A1A;
+  --color-outline-variant: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-editorial-bg text-editorial-ink font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal;
+  }
+}
+
+.glass-panel {
+  @apply bg-editorial-bg border-b border-editorial-ink;
+}
+
+.hero-gradient {
+  @apply bg-editorial-muted;
+}
+
+.editorial-label {
+  @apply font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-editorial-ink/60;
+}
+
+.editorial-border {
+  @apply border border-editorial-ink;
+}
