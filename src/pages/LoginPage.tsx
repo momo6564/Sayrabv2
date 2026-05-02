@@ -5,7 +5,8 @@ import {Link, useLocation, useNavigate} from 'react-router';
 
 import {clearStoredUser, decodeGoogleCredential, getStoredUser, storeUser, type AuthUser} from '../auth';
 
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+const DEFAULT_GOOGLE_CLIENT_ID = '534863953723-0pvaogamvnnt5hspj7egrvp929epn3v0.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || DEFAULT_GOOGLE_CLIENT_ID;
 const GOOGLE_SCRIPT_ID = 'google-identity-services';
 
 function loadGoogleScript() {
@@ -50,11 +51,6 @@ export const LoginPage: React.FC = () => {
 
   React.useEffect(() => {
     if (user || !buttonRef.current) {
-      return;
-    }
-
-    if (!GOOGLE_CLIENT_ID) {
-      setError('Missing Google client ID. Add VITE_GOOGLE_CLIENT_ID to your local env file.');
       return;
     }
 
