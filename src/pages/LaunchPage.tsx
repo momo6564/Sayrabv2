@@ -14,6 +14,7 @@ import {
   MousePointer2,
   ArrowRight
 } from 'lucide-react';
+import hoodieGreen from '../assets/hoodie-green.jpg';
 
 export const LaunchPage: React.FC = () => {
   const [step, setStep] = React.useState(1);
@@ -65,7 +66,7 @@ export const LaunchPage: React.FC = () => {
                     className="relative w-full h-full flex items-center justify-center"
                  >
                     <img 
-                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl_frp3kt1m2w0EpPaur7diGWllEdztbl9P6o8EQT9PTHAh9qrUuPS8EyfvqL6wm4Ol3ye2nQPv3aGNUYF-xpSpCVJ0vrJWy7PiY_cMdSuKue9_uCGtg9gk4wVP3QTCvQ0A_2zOWxmkCmILQH63N_VWRDXox3xWMUoQroH5Em0AmwD6tHW6bI2K9aTvEFC_OE6DxzByUtsROuGeNjimIWSzXG1slD9xcrhKGMNHxcNl4k9dBFaV-rlOBRF9-d77flEpXJOZXPu9Lhe" 
+                       src={hoodieGreen}
                        alt="Mockup"
                        className="max-w-[70%] h-auto grayscale opacity-80"
                     />

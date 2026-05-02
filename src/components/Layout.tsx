@@ -2,10 +2,18 @@ import React from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, ShoppingCart, User, Search, Heart, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import {getStoredUser, subscribeToAuthChanges} from '../auth';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [user, setUser] = React.useState(() => getStoredUser());
   const location = useLocation();
+
+  React.useEffect(() => {
+    return subscribeToAuthChanges(() => {
+      setUser(getStoredUser());
+    });
+  }, []);
 
   const navLinks = [
     { name: 'Store', path: '/store' },
@@ -49,11 +57,11 @@ export const Header: React.FC = () => {
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-editorial-ink text-white text-[8px] flex items-center justify-center font-bold">2</span>
           </Link>
           <Link 
-            to="/login" 
+            to={user ? '/dashboard' : '/login'} 
             id="login-btn"
             className="hidden sm:flex items-center gap-2 px-6 py-2 border border-editorial-ink text-[10px] uppercase font-bold tracking-widest hover:bg-editorial-ink hover:text-white transition-all"
           >
-            Sign In
+            {user ? `Hi ${user.givenName ?? user.fullName.split(' ')[0]}` : 'Sign In'}
           </Link>
           
           {/* Mobile Menu Toggle */}
@@ -88,11 +96,11 @@ export const Header: React.FC = () => {
                 </Link>
               ))}
               <Link
-                to="/login"
+                to={user ? '/dashboard' : '/login'}
                 className="w-full py-4 border border-editorial-ink text-center text-xs font-bold uppercase tracking-widest mt-4 hover:bg-editorial-ink hover:text-white transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                Sign In
+                {user ? 'Dashboard' : 'Sign In'}
               </Link>
             </div>
           </motion.div>
